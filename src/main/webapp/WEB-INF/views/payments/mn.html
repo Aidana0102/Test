@@ -1,0 +1,28 @@
+   <!DOCTYPE html>
+    <html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=cp1251" />
+        <title>PaymentPage</title>
+    </head>
+<body>
+<br/>
+<hr/>
+<h2>Converter</h2>
+<h3>here should be pic of Hbank</h3>
+<br/>
+<hr/>
+
+<form th:method="POST" th:action="@{/payments}" th:object="${paymenttb}">
+    <label for="payersName" >Enter payersName:</label>
+    <input id="payersName" th:field="*{payersName}" type="text"/>
+    <div style="color:#ff0000" th:if="${#fields.hasErrors('payersName')}" th:error="*{payersName}"> payersName error </div>
+    <br/>
+    <input type="submit" value="Create!"/>
+</form>
+
+
+</body>
+
+
+</html>
