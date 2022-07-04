@@ -20,7 +20,7 @@ public class Payment {
     Long payersBIK;
 
     @NotEmpty(message="THe field should not be empty")
-    Date  dateOfExecution;
+     Date  dateOfExecution;
 
 
     @NotEmpty(message="The field should not be empty")
@@ -46,13 +46,22 @@ public class Payment {
 
     @NotEmpty(message="The field should not be empty")
     Long  amount ;
-    @NotEmpty(message="The field should not be empty")
-    Long   GKPO;
+    private org.example.models.GKPO GKPO;
     @NotEmpty(message="The field should not be empty")
     String purposeOfPayment;
 
 
-    public Payment(String payersName, Long payersAccount, Long payersBIK, Date dateOfExecution, Date paymentDate, String beneficiarysName, Long beneficiarysAccount, Long INN, Long beneficiarysBIK, Long amount, Long GKPO, String purposeOfPayment) {
+
+
+//
+//    public static enum GKPO {
+//        OPEN, IN_WORK, FINISHED
+//    }
+
+
+
+
+    public Payment(String payersName, Long payersAccount, Long payersBIK, Date dateOfExecution, Date paymentDate, String beneficiarysName, Long beneficiarysAccount, Long INN, Long beneficiarysBIK, Long amount, org.example.models.GKPO GKPO, String purposeOfPayment) {
         this.payersName = payersName;
         this.payersAccount = payersAccount;
         this.payersBIK = payersBIK;
@@ -69,7 +78,6 @@ public class Payment {
 
     public Payment() {
     }
-
 
     public String getPayersName() {
         return payersName;
@@ -151,11 +159,11 @@ public class Payment {
         this.amount = amount;
     }
 
-    public Long getGKPO() {
+    public org.example.models.GKPO getGKPO() {
         return GKPO;
     }
 
-    public void setGKPO(Long GKPO) {
+    public void setGKPO(org.example.models.GKPO GKPO) {
         this.GKPO = GKPO;
     }
 

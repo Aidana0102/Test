@@ -1,5 +1,6 @@
 package org.example.dao;
 
+import org.example.models.GKPO;
 import org.example.models.Payment;
 import org.springframework.stereotype.Component;
 
@@ -40,9 +41,9 @@ public class PaymentDao {
                 ResultSet resultSet = statement.executeQuery(SQL);
 
                 while (resultSet.next()) {
+                  //  payment.setPayersName(resultSet.getString("payersName"));
 
                     Payment payment = new Payment();
-                    payment.setPayersName(resultSet.getString("payersName"));
                     payment.setPayersAccount(resultSet.getLong("payersAccount"));
                     payment.setPayersBIK(resultSet.getLong("payersBIK"));
                     payment.setDateOfExecution(resultSet.getDate("dateOfExecution"));
@@ -52,7 +53,7 @@ public class PaymentDao {
                     payment.setINN(resultSet.getLong("INN"));
                     payment.setBeneficiarysBIK(resultSet.getLong("beneficiarysBIK"));
                     payment.setAmount(resultSet.getLong("amount"));
-                    payment.setGKPO(resultSet.getLong("GKPO"));
+                    payment.setGKPO(GKPO.valueOf(resultSet.getString("GKPO")));
                     payment.setPurposeOfPayment(resultSet.getString("purposeOfPayment"));
 
 
@@ -67,29 +68,6 @@ public class PaymentDao {
 
 
 
-
-//        public Payment show(int id) throws SQLException {
-//
-//            //      return people.stream().filter(person -> person.getId() == id).findAny().orElse(null);
-//            PreparedStatement preparedStatement= connection.prepareStatement("select * from person where  id =?");
-//
-//            preparedStatement.setInt(1,id);
-//            ResultSet resultSet=  preparedStatement.executeQuery();
-//            resultSet.next();
-//
-//            Payment payment= new Payment();
-//            payment.setqqqqqq(resultSet.getInt("id"));
-//            payment.setName(resultSet.getString("name"));
-//            payment.setEmail(resultSet.getString("email"));
-//
-//            return  person;
-//        }
-
-
-
-
-//    String payersName, Long payersAccount, Long payersBIK, Date dateOfExecution, String beneficiarysName,
-//    Long beneficiarysAccount, Long INN, Long beneficiarysBIK, Long amount, Long GKPO, String purposeOfPayment
 
 
     public static void save(Payment payment) {
@@ -113,7 +91,7 @@ public class PaymentDao {
 
                 preparedStatement.setLong(9, payment.getAmount());
 
-                preparedStatement.setLong(10, payment.getGKPO());
+           //     preparedStatement.setString(10, payment.getGKPO().getGkpo());
 
                 preparedStatement.setString(11, payment.getPurposeOfPayment());
 
